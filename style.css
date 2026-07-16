@@ -1,0 +1,251 @@
+/* ===========================
+   Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ===========================
+   Theme
+=========================== */
+
+:root{
+
+    --bg:#fafafa;
+
+    --text:#181818;
+
+    --subtitle:#6d6d6d;
+
+    --quote:#3a3a3a;
+    --quote-hover:#000;
+
+    --accent:#ffe63d;
+
+    --button-bg:#111;
+    --button-text:#fff;
+
+}
+
+html.dark{
+
+    --bg:#111;
+
+    --text:#f5f5f5;
+
+    --subtitle:#bdbdbd;
+
+    --quote:#dddddd;
+    --quote-hover:#ffffff;
+
+    --button-bg:#ffffff;
+    --button-text:#111111;
+
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:
+
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    line-height:1.6;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
+}
+
+/* ===========================
+   Layout
+=========================== */
+
+.container{
+
+    width:100%;
+    max-width:960px;
+
+    margin:0 auto;
+
+    padding:40px 24px;
+
+}
+
+/* ===========================
+   Hero
+=========================== */
+
+.hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    gap:1.5rem;
+
+}
+
+.hero h1{
+
+    position:relative;
+
+    font-size:clamp(2.6rem,6vw,5rem);
+
+    font-weight:700;
+
+    letter-spacing:.04em;
+
+    text-transform:lowercase;
+
+}
+
+.magnolia{
+
+    position:relative;
+
+    display:inline-block;
+
+}
+
+.dot{
+
+    position:absolute;
+
+    width:1.8em;
+    height:1.8em;
+
+    left:-0.22em;
+
+    top:52%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    opacity:.35;
+
+    z-index:-1;
+
+}
+
+.subtitle{
+
+    font-size:1.05rem;
+
+    color:var(--subtitle);
+
+}
+
+.quote{
+
+    margin-top:24px;
+
+    max-width:650px;
+
+    text-decoration:none;
+
+    color:var(--quote);
+
+    transition:
+        color .2s ease,
+        opacity .2s ease;
+
+}
+
+.quote:hover{
+
+    color:var(--quote-hover);
+
+    text-decoration:underline;
+
+}
+
+/* ===========================
+   Actions
+=========================== */
+
+.actions{
+
+    position:fixed;
+
+    top:24px;
+    left:24px;
+
+    display:flex;
+    gap:10px;
+
+}
+
+.action-button{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    height:36px;
+
+    padding:0 16px;
+
+    border:none;
+
+    background:var(--button-bg);
+
+    color:var(--button-text);
+
+    text-decoration:none;
+
+    font-size:.8rem;
+
+    cursor:pointer;
+
+    transition:
+        background .2s,
+        color .2s,
+        transform .15s;
+
+}
+
+.action-button:hover{
+
+    transform:translateY(-1px);
+
+}
+
+.action-button:active{
+
+    transform:translateY(0);
+
+}

@@ -1,0 +1,43 @@
+# Baselarte Magnolia
+
+## Description
+
+Baselarte Magnolia is a minimalist personal landing page focused on software engineering, language and infrastructure.
+
+## Purpose
+
+This website represents a digital identity combining technology, philosophy and engineering principles.
+
+## Main Topics
+
+- Software engineering
+- Programming languages
+- Infrastructure
+- Cloud computing
+- Technology and philosophy
+
+## Design Philosophy
+
+The project follows a minimalist approach:
+simple interfaces, meaningful elements and intentional design choices.
+
+## Quote Reference
+
+The website references Ludwig Wittgenstein's idea:
+
+"The limits of my language mean the limits of my world."
+
+This connects linguistic concepts with software engineering and abstraction.
+
+## Technologies
+
+- HTML5
+- CSS3
+- JavaScript
+- Docker
+- Nginx
+- AWS infrastructure
+
+## Content Policy
+
+The website contains original project information and technical experimentation.
