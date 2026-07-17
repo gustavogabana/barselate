@@ -1,0 +1,7 @@
+services:
+  site:
+    image: ${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}
+    container_name: baselarte-magnolia
+    restart: unless-stopped
+    ports:
+      - "80:80"
