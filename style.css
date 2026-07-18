@@ -18,14 +18,12 @@
 
     --text:#181818;
 
-    --subtitle:#6d6d6d;
+    --subtitle:#666;
 
-    --quote:#3a3a3a;
-    --quote-hover:#000;
-
-    --accent:#ffe63d;
+    --muted:#9a9a9a;
 
     --button-bg:#111;
+
     --button-text:#fff;
 
 }
@@ -38,11 +36,11 @@ html.dark{
 
     --subtitle:#bdbdbd;
 
-    --quote:#dddddd;
-    --quote-hover:#ffffff;
+    --muted:#7f7f7f;
 
-    --button-bg:#ffffff;
-    --button-text:#111111;
+    --button-bg:#fff;
+
+    --button-text:#111;
 
 }
 
@@ -58,8 +56,11 @@ body{
     align-items:center;
     justify-content:center;
 
-    font-family:
+    background:var(--bg);
 
+    color:var(--text);
+
+    font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -67,12 +68,6 @@ body{
         Helvetica,
         Arial,
         sans-serif;
-
-    line-height:1.6;
-
-    background:var(--bg);
-
-    color:var(--text);
 
     transition:
         background .25s ease,
@@ -87,11 +82,12 @@ body{
 .container{
 
     width:100%;
+
     max-width:960px;
 
-    margin:0 auto;
+    margin:auto;
 
-    padding:40px 24px;
+    padding:48px 24px;
 
 }
 
@@ -111,84 +107,41 @@ body{
 
     text-align:center;
 
-    gap:1.5rem;
+    gap:1rem;
 
 }
 
 .hero h1{
 
-    position:relative;
-
-    font-size:clamp(2.6rem,6vw,5rem);
+    font-size:clamp(3rem,7vw,5rem);
 
     font-weight:700;
 
-    letter-spacing:.04em;
+    letter-spacing:.05em;
 
     text-transform:lowercase;
 
 }
 
-.magnolia{
-
-    position:relative;
-
-    display:inline-block;
-
-}
-
-.dot{
-
-    position:absolute;
-
-    width:1.8em;
-    height:1.8em;
-
-    left:-0.22em;
-
-    top:52%;
-
-    transform:translateY(-50%);
-
-    border-radius:50%;
-
-    background:var(--accent);
-
-    opacity:.35;
-
-    z-index:-1;
-
-}
-
 .subtitle{
-
-    font-size:1.05rem;
 
     color:var(--subtitle);
 
-}
-
-.quote{
-
-    margin-top:24px;
-
-    max-width:650px;
-
-    text-decoration:none;
-
-    color:var(--quote);
-
-    transition:
-        color .2s ease,
-        opacity .2s ease;
+    font-size:1rem;
 
 }
 
-.quote:hover{
+.motto{
 
-    color:var(--quote-hover);
+    margin-top:1rem;
 
-    text-decoration:underline;
+    color:var(--muted);
+
+    font-size:.9rem;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
 
 }
 
@@ -201,19 +154,12 @@ body{
     position:fixed;
 
     top:24px;
-    left:24px;
 
-    display:flex;
-    gap:10px;
+    left:24px;
 
 }
 
 .action-button{
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
 
     height:36px;
 
@@ -225,16 +171,14 @@ body{
 
     color:var(--button-text);
 
-    text-decoration:none;
-
     font-size:.8rem;
 
     cursor:pointer;
 
     transition:
-        background .2s,
-        color .2s,
-        transform .15s;
+        transform .15s ease,
+        background .2s ease,
+        color .2s ease;
 
 }
 
