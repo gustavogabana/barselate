@@ -13,7 +13,7 @@ docker build -t <site>:<latest> .
 run:
 
 ```bash
-docker run -d --name baselarte-magnolia -p 80:80 <ecr-uri>/baselarte-magnolia:latest
+docker run -d --name <image-name> -p 80:80 <ecr-uri>/<image-name>:<tag>
 ```
 
 ## Docker compose run
