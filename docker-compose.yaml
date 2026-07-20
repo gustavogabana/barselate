@@ -5,19 +5,5 @@ services:
     restart: unless-stopped
     # Porta interna do container.
     # Documenta que o serviço escuta HTTP na porta 80.
-    expose:
-      - "80"
-
-  nginx:
-    image: nginx:alpine
-    container_name: ${DOCKER_NGINX_CONTAINER_NAME}
-    restart: unless-stopped
-    # Host:80 -> Container nginx:80
-    # Única porta exposta para fora.
     ports:
       - "80:80"
-    volumes:
-      # :ro = read-only
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - site
