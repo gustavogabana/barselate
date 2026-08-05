@@ -2,4 +2,10 @@ User-agent: *
 
 Allow: /
 
+Disallow: /login/
+Disallow: /upload/
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /password-manager/
+
 Sitemap: https://baselarte.com/sitemap.xml

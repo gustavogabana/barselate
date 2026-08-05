@@ -1,43 +1,101 @@
-# Baselarte Magnolia
+# Baselarte
 
 ## Description
 
-Baselarte Magnolia is a minimalist personal landing page focused on software engineering, language and infrastructure.
+Baselarte is a minimalist software engineering project focused on building a simple, efficient and scalable web application.
+
+The project combines frontend development, infrastructure learning, cloud concepts and future backend integrations.
 
 ## Purpose
 
-This website represents a digital identity combining technology, philosophy and engineering principles.
+The purpose of Baselarte is to serve as a continuous software engineering learning project, evolving from a static frontend application into a complete software system.
+
+The project explores:
+
+- frontend architecture;
+- authentication systems;
+- cloud storage;
+- backend APIs;
+- infrastructure;
+- software design principles.
 
 ## Main Topics
 
 - Software engineering
-- Programming languages
-- Infrastructure
+- Frontend development
+- Web architecture
+- Authentication and security
 - Cloud computing
-- Technology and philosophy
+- Infrastructure
+- Storage systems
+- Programming practices
 
 ## Design Philosophy
 
-The project follows a minimalist approach:
-simple interfaces, meaningful elements and intentional design choices.
+The project follows a minimalist and functional approach:
 
-## Quote Reference
+- simple interfaces;
+- efficient interactions;
+- clear structure;
+- maintainable code;
+- progressive evolution without unnecessary complexity.
 
-The website references Ludwig Wittgenstein's idea:
+The goal is to prioritize functionality, clarity and usability.
 
-"The limits of my language mean the limits of my world."
+## Current Features
 
-This connects linguistic concepts with software engineering and abstraction.
+Current frontend features include:
+
+- Minimal landing page.
+- SEO-oriented HTML structure.
+- Responsive design.
+- Dark mode synchronization.
+- Login and registration interface.
+- Frontend validation.
+- Media upload interface.
+- Image and video preview.
+- Folder organization system.
+- Media descriptions and hashtags.
+
+Current data handling is performed in memory only.
+
+Future versions will integrate backend services and persistent storage.
+
+## Future Features
+
+Planned features:
+
+- User profiles.
+- Mandatory @username system.
+- Authentication with access and refresh tokens.
+- Centralized API communication layer.
+- Cloud storage integration.
+- Media management using object storage.
+- Secure password manager system.
+- Continuous UX/UI improvements.
 
 ## Technologies
+
+Current:
 
 - HTML5
 - CSS3
 - JavaScript
 - Docker
 - Nginx
-- AWS infrastructure
 
-## Content Policy
+Future:
 
-The website contains original project information and technical experimentation.
+- Backend API
+- Database
+- Cloudflare R2 storage
+- Authentication services
+- Cloud infrastructure
+
+## Architecture
+
+The frontend follows a feature-based structure.
+
+Each feature keeps its own HTML, CSS and JavaScript files.
+
+Example:
