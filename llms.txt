@@ -1,0 +1,24 @@
+# Baselarte
+
+> Baselarte (Baselarte Ltda.) is a software engineering and creative technology company. It builds systems, interfaces and infrastructure that are simple on the surface and rigorous underneath.
+
+The public website is currently a single landing page. There is no product, pricing, blog or contact form published yet; inquiries are by introduction only. Motto: "Non desistas. Non exieris."
+
+## Practice
+
+- Engineering: software that is correct first, fast second and clever only when it must be.
+- Infrastructure: cloud, storage and delivery that are observable, reproducible and cheap to keep alive.
+- Interfaces: calm, legible and fast; fewer screens, better words, motion with a purpose.
+- Creative technology: experiments, tools and small instruments that make an idea tangible before it becomes a product.
+
+## Principles
+
+- Simplicity is a discipline, not a starting point.
+- Fundamentals over fashion.
+- Build only what is necessary, then make it excellent.
+- Clarity over abstraction.
+
+## Pages
+
+- [Home](https://baselarte.com/): landing page describing the company, its practice and principles.
+- [Sitemap](https://baselarte.com/sitemap.xml)

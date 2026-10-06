@@ -1,11 +1,7 @@
+# Baselarte — https://baselarte.com
+# Everything here is public. Search engines and AI crawlers are welcome.
+
 User-agent: *
-
 Allow: /
-
-Disallow: /login/
-Disallow: /upload/
-Disallow: /profile/
-Disallow: /settings/
-Disallow: /password-manager/
 
 Sitemap: https://baselarte.com/sitemap.xml

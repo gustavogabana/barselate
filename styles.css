@@ -1,0 +1,558 @@
+/* ==========================================================================
+   Baselarte — tokens
+   Theme is set on <html data-theme> by time of day (see index.html / main.js).
+   ========================================================================== */
+
+:root {
+  --paper: #f3f1ec;
+  --ink: #141413;
+  --muted: #6c6a65;
+  --faint: #b3b0a9;
+  --line: rgba(20, 20, 19, 0.12);
+  --glow: rgba(20, 20, 19, 0.05);
+
+  --serif: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --gutter: clamp(20px, 4.5vw, 64px);
+  --max: 1320px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #0d0d0c;
+  --ink: #ebe9e3;
+  --muted: #8f8c86;
+  --faint: #4a4844;
+  --line: rgba(235, 233, 227, 0.12);
+  --glow: rgba(150, 175, 205, 0.09);
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Smooth cross-fade when the clock crosses 06:00 / 18:00. */
+html.theme-shift,
+html.theme-shift * {
+  transition: background-color 1.2s var(--ease), color 1.2s var(--ease),
+    border-color 1.2s var(--ease), stroke 1.2s var(--ease) !important;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 8px 12px;
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-200%);
+}
+
+.skip:focus {
+  transform: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   Chrome: progress bar + top bar
+   ========================================================================== */
+
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--ink);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 60;
+}
+
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: calc(env(safe-area-inset-top, 0px) + 22px) var(--gutter) 22px;
+  mix-blend-mode: difference;
+  color: #f3f1ec;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.mark {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock .sep {
+  opacity: 0.4;
+}
+
+.clock-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 120px var(--gutter) clamp(56px, 9vh, 104px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70vmax;
+  height: 70vmax;
+  margin: -35vmax 0 0 -35vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+  transform: translate(60vw, 35vh);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cipher {
+  position: absolute;
+  top: 96px;
+  right: var(--gutter);
+  bottom: 96px;
+  display: grid;
+  grid-auto-rows: 1.55em;
+  align-content: start;
+  text-align: right;
+  color: var(--faint);
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  text-transform: none;
+  white-space: pre;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.eyebrow {
+  color: var(--muted);
+  margin-bottom: clamp(20px, 3vw, 36px);
+}
+
+.hero-title {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(44px, 8.6vw, 136px);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.hero-title .word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.hero-title em {
+  letter-spacing: -0.02em;
+  padding-right: 0.04em;
+}
+
+.rotator {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.lede {
+  max-width: 34rem;
+  margin-top: clamp(28px, 4vw, 48px);
+  color: var(--muted);
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.55;
+}
+
+.lede em {
+  color: var(--ink);
+  font-size: 1.12em;
+}
+
+.scroll-cue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(56px, 9vh, 104px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+}
+
+.scroll-cue i {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: 0 50%;
+}
+
+/* ==========================================================================
+   Marquee
+   ========================================================================== */
+
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  padding-block: clamp(18px, 2.4vw, 28px);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-track span {
+  flex: none;
+  padding-right: clamp(36px, 5vw, 80px);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.marquee-track span::after {
+  content: "·";
+  display: inline-block;
+  padding-left: clamp(36px, 5vw, 80px);
+  color: var(--faint);
+  font-style: normal;
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(96px, 14vw, 200px) var(--gutter) 0;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: clamp(48px, 7vw, 96px);
+}
+
+.label {
+  color: var(--muted);
+}
+
+.section-title {
+  font-weight: 400;
+  font-size: clamp(30px, 4.2vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+/* Practice rows */
+
+.rows {
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: baseline;
+  padding: clamp(28px, 3.4vw, 44px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.9s var(--ease);
+}
+
+.row:hover::before {
+  transform: scaleX(1);
+}
+
+.row-n {
+  color: var(--muted);
+}
+
+.row h3 {
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  transition: transform 0.7s var(--ease);
+}
+
+.row:hover h3 {
+  transform: translateX(10px);
+}
+
+.row p {
+  color: var(--muted);
+  max-width: 30rem;
+}
+
+/* Principles */
+
+.statements li {
+  font-size: clamp(30px, 4.6vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  padding-bottom: clamp(18px, 2.4vw, 32px);
+  margin-bottom: clamp(18px, 2.4vw, 32px);
+  border-bottom: 1px solid var(--line);
+}
+
+.statements li:nth-child(even) {
+  padding-left: clamp(0px, 16vw, 260px);
+}
+
+/* Closing */
+
+.closing {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.closing-title {
+  font-weight: 400;
+  font-size: clamp(48px, 10vw, 168px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.closing-note {
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 32px var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 32px);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.motto {
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.small {
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   Pre-animation states (only when JS + motion are available)
+   ========================================================================== */
+
+.js [data-intro],
+.js [data-reveal] {
+  opacity: 0;
+}
+
+.js .hero-title .word {
+  transform: translateY(110%);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .section-head,
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .cipher {
+    opacity: 0.45;
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .clock .sep,
+  .clock [data-mode] {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-intro],
+  .js [data-reveal] {
+    opacity: 1;
+  }
+
+  .js .hero-title .word {
+    transform: none;
+  }
+
+  .row::before,
+  .row h3 {
+    transition: none;
+  }
+}

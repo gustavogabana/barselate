@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Theme: dark from 18:00 to 06:00 (visitor's local time), light otherwise.
+       Runs before first paint so there is no flash. main.js keeps it in sync. -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      var h = new Date().getHours();
+      d.setAttribute("data-theme", h >= 18 || h < 6 ? "dark" : "light");
+      d.classList.add("js");
+      // If the animation library never loads, show everything anyway.
+      setTimeout(function () { if (!window.__motionReady) d.classList.remove("js"); }, 2500);
+    })();
+  </script>
+
+  <title>Baselarte — Software Engineering &amp; Creative Technology</title>
+  <meta name="description" content="Baselarte is a software engineering and creative technology company. Quietly building precise systems, interfaces and infrastructure.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Baselarte Ltda.">
+  <meta name="application-name" content="Baselarte">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f1ec">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://baselarte.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Baselarte">
+  <meta property="og:url" content="https://baselarte.com/">
+  <meta property="og:title" content="Baselarte — Software Engineering &amp; Creative Technology">
+  <meta property="og:description" content="Quietly building precise systems, interfaces and infrastructure.">
+  <meta property="og:image" content="https://baselarte.com/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Baselarte — a dark mountain horizon scattered with glyphs.">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Baselarte — Software Engineering &amp; Creative Technology">
+  <meta name="twitter:description" content="Quietly building precise systems, interfaces and infrastructure.">
+  <meta name="twitter:image" content="https://baselarte.com/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Baselarte — a dark mountain horizon scattered with glyphs.">
+
+  <!-- Icons & manifest -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="alternate" type="text/plain" href="llms.txt" title="LLM-readable summary">
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/motion@14.0.0/+esm" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://baselarte.com/#organization",
+        "name": "Baselarte",
+        "legalName": "Baselarte Ltda.",
+        "url": "https://baselarte.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://baselarte.com/assets/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://baselarte.com/assets/og-image.jpg",
+        "description": "Software engineering and creative technology company building precise systems, interfaces and infrastructure.",
+        "slogan": "Non desistas. Non exieris.",
+        "knowsAbout": [
+          "Software engineering",
+          "Creative technology",
+          "Web development",
+          "Cloud infrastructure",
+          "Interface design",
+          "Developer tooling"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://baselarte.com/#website",
+        "url": "https://baselarte.com/",
+        "name": "Baselarte",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://baselarte.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://baselarte.com/#webpage",
+        "url": "https://baselarte.com/",
+        "name": "Baselarte — Software Engineering & Creative Technology",
+        "description": "Baselarte is a software engineering and creative technology company. Quietly building precise systems, interfaces and infrastructure.",
+        "isPartOf": { "@id": "https://baselarte.com/#website" },
+        "about": { "@id": "https://baselarte.com/#organization" },
+        "primaryImageOfPage": "https://baselarte.com/assets/og-image.jpg",
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="wordmark" href="./" aria-label="Baselarte, home">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="8.5"/><path d="M4.5 19h23"/></svg>
+      <span>baselarte</span>
+    </a>
+    <p class="clock mono" aria-live="off">
+      <span class="clock-dot" aria-hidden="true"></span>
+      <span data-clock>--:--</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span data-mode>day</span>
+    </p>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="cipher mono" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow mono" data-intro data-scramble>Baselarte Ltda. — Index 00</p>
+
+        <h1 id="hero-title" class="hero-title">
+          <span class="line"><span class="word">Software</span> <span class="word">engineering,</span></span>
+          <span class="line"><span class="word">crafted</span> <span class="word">with</span> <span class="rotator"><em class="word" data-rotate>quiet</em></span></span>
+          <span class="line"><span class="word">precision.</span></span>
+        </h1>
+
+        <p class="lede" data-intro>
+          A software engineering and creative technology company.
+          We build systems, interfaces and infrastructure that are
+          <em>simple on the surface</em> and rigorous underneath.
+        </p>
+      </div>
+
+      <p class="scroll-cue mono" data-intro aria-hidden="true"><span>Scroll</span><i></i></p>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Systems</span><span>Interfaces</span><span>Infrastructure</span><span>Tooling</span><span>Research</span><span>Craft</span>
+        <span>Systems</span><span>Interfaces</span><span>Infrastructure</span><span>Tooling</span><span>Research</span><span>Craft</span>
+      </div>
+    </div>
+
+    <section class="section practice" aria-labelledby="practice-title">
+      <header class="section-head">
+        <p class="label mono" data-reveal>01 — Practice</p>
+        <h2 id="practice-title" class="section-title" data-reveal>What we work on, <em>in no particular hurry.</em></h2>
+      </header>
+
+      <ol class="rows">
+        <li class="row" data-reveal>
+          <span class="row-n mono">i.</span>
+          <h3>Engineering</h3>
+          <p>Software that is correct first, fast second and clever only when it must be. Clear boundaries, honest abstractions, code meant to be read.</p>
+        </li>
+        <li class="row" data-reveal>
+          <span class="row-n mono">ii.</span>
+          <h3>Infrastructure</h3>
+          <p>Cloud, storage and delivery treated as craft. Systems that are observable, reproducible and cheap to keep alive.</p>
+        </li>
+        <li class="row" data-reveal>
+          <span class="row-n mono">iii.</span>
+          <h3>Interfaces</h3>
+          <p>Calm, legible, fast. Fewer screens, better words, motion with a purpose. The interface is the product people actually meet.</p>
+        </li>
+        <li class="row" data-reveal>
+          <span class="row-n mono">iv.</span>
+          <h3>Creative technology</h3>
+          <p>Where engineering meets taste: experiments, tools and small instruments that make an idea tangible before it becomes a product.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section principles" aria-labelledby="principles-title">
+      <header class="section-head">
+        <p class="label mono" data-reveal>02 — Principles</p>
+        <h2 id="principles-title" class="visually-hidden">Principles</h2>
+      </header>
+
+      <ul class="statements">
+        <li data-reveal><em>Simplicity</em> is a discipline, not a starting point.</li>
+        <li data-reveal>Fundamentals over fashion.</li>
+        <li data-reveal>Build only what is necessary. <em>Then make it excellent.</em></li>
+        <li data-reveal>Clarity over abstraction. Always.</li>
+      </ul>
+    </section>
+
+    <section class="section closing" aria-labelledby="closing-title">
+      <p class="label mono" data-reveal>03 — Status</p>
+      <h2 id="closing-title" class="closing-title" data-reveal>Something is <em>being built.</em></h2>
+      <p class="closing-note mono" data-reveal data-scramble>Inquiries by introduction only.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="motto"><em>Non desistas. Non exieris.</em></p>
+    <p class="mono small">© <span data-year>2026</span> Baselarte Ltda. — Software engineering &amp; creative technology.</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
