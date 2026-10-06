@@ -2,7 +2,7 @@
 
 > Baselarte (Baselarte Ltda.) is a software engineering and creative technology company. It builds systems, interfaces and infrastructure that are simple on the surface and rigorous underneath.
 
-The public website is currently a single landing page. There is no product, pricing, blog or contact form published yet; inquiries are by introduction only. Motto: "Non desistas. Non exieris."
+The public website is currently a single landing page, available in English and Brazilian Portuguese (switchable on the page). There is no product, pricing, blog or contact form published yet; inquiries are by introduction only. Motto: "Non desistas. Non exieris."
 
 ## Practice
 
@@ -17,6 +17,10 @@ The public website is currently a single landing page. There is no product, pric
 - Fundamentals over fashion.
 - Build only what is necessary, then make it excellent.
 - Clarity over abstraction.
+
+## Accountability
+
+The site quotes an IBM internal training presentation (1979): "A computer can never be held accountable, therefore a computer must never make a management decision." Baselarte builds tools that help people decide, not tools that decide for them.
 
 ## Pages
 
