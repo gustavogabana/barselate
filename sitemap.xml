@@ -3,7 +3,6 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://baselarte.com/</loc>
-    <lastmod>2026-10-06</lastmod>
     <image:image>
       <image:loc>https://baselarte.com/assets/og-image.jpg</image:loc>
     </image:image>

@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <script>
-    (function () {
-      var h = new Date().getHours();
-      document.documentElement.setAttribute("data-theme", h >= 18 || h < 6 ? "dark" : "light");
-    })();
-  </script>
-  <title>Not found — Baselarte</title>
+  <title data-i18n="notFound.metaTitle">Not found — Baselarte</title>
   <meta name="robots" content="noindex">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f1ec">
+
+  <!-- Sets theme (by local time) and language before first paint. -->
+  <script src="/boot.js"></script>
+
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
@@ -20,10 +20,18 @@
 </head>
 <body>
   <main class="hero">
-    <p class="mono" style="color: var(--muted); margin-bottom: 24px">404</p>
-    <h1 class="hero-title">Nothing <em>here, yet.</em></h1>
-    <p class="hero-lede" lang="pt-BR">Nada <em>aqui, ainda.</em></p>
-    <p class="hero-lede"><a class="lang" href="/">baselarte.com</a></p>
+    <p class="monospace-label not-found-code">404</p>
+    <h1 class="hero-title" data-i18n="notFound.title">Nothing <em>here, yet.</em></h1>
+    <p class="hero-lede">
+      <a class="language-toggle" href="/" data-i18n="notFound.backHome">Back to baselarte.com</a>
+    </p>
   </main>
+
+  <script src="/i18n.js"></script>
+  <script>
+    // No Motion on this page, so show everything straight away.
+    window.siteBoot.markMotionStarted();
+    window.siteBoot.revealWithoutMotion();
+  </script>
 </body>
 </html>

@@ -1,27 +1,28 @@
 // Baselarte — English / Brazilian Portuguese.
-// Classic (non-module) script so it runs right after the markup is parsed,
-// before main.js and usually before first paint.
+// Classic (non-module) script at the end of <body>, so it runs right after the
+// markup is parsed and before main.js. Depends on window.siteBoot (boot.js).
 //
 // Markup hooks:
-//   data-i18n="key"                 → element innerHTML (strings may contain <em>)
-//   data-i18n-attr="attr:key;..."   → element attributes
-//   data-lang-toggle                → button that flips between the two languages
-//   data-set-lang="en|pt-BR"        → button that picks a specific language
+//   data-i18n="key"                          → element innerHTML (strings may contain <em>)
+//   data-i18n-attributes="attribute:key;..." → element attributes (e.g. meta content, aria-label)
+//   data-language-toggle                     → button that flips between the two languages
+//   data-language-option="en|pt-BR"          → button that picks a specific language
 
-(function () {
-  var STRINGS = {
+(() => {
+  const TRANSLATIONS = {
     en: {
       "meta.title": "Baselarte — Software Engineering & Creative Technology",
       "meta.description": "Baselarte is a software engineering and creative technology company. Quietly building precise systems, interfaces and infrastructure.",
       "meta.locale": "en_US",
+      "meta.localeAlternate": "pt_BR",
 
-      "skip": "Skip to content",
+      "skipLink": "Skip to content",
       "nav.label": "Main",
       "nav.about": "About",
       "nav.practice": "Practice",
       "nav.principles": "Principles",
-      "lang.short": "PT",
-      "lang.switch": "Ver em português",
+      "languageToggle.label": "PT",
+      "languageToggle.description": "Ver em português",
 
       "hero.title": "Software engineering, built with <em>quiet precision.</em>",
       "hero.lede": "Baselarte is a software engineering and creative technology company. We build systems, interfaces and infrastructure that are <em>simple on the surface</em> and rigorous underneath.",
@@ -38,7 +39,7 @@
 
       "principles.title": "Accountability stays human",
       "principles.quote": "A computer can never be held accountable, therefore a computer must never make a management decision.",
-      "principles.cite": "IBM internal training presentation, 1979",
+      "principles.citation": "IBM internal training presentation, 1979",
       "principles.body": "We build tools that help people decide, not tools that decide for them. Automation should sharpen judgment, never replace it.",
 
       "status.title": "Something is being built",
@@ -47,23 +48,28 @@
       "footer.company": "Company",
       "footer.language": "Language",
       "footer.index": "Index",
-      "footer.time": "Local time",
-      "mode.day": "day",
-      "mode.night": "night"
+      "footer.localTime": "Local time",
+      "dayPeriod.day": "day",
+      "dayPeriod.night": "night",
+
+      "notFound.metaTitle": "Not found — Baselarte",
+      "notFound.title": "Nothing <em>here, yet.</em>",
+      "notFound.backHome": "Back to baselarte.com"
     },
 
     "pt-BR": {
       "meta.title": "Baselarte — Engenharia de Software e Tecnologia Criativa",
       "meta.description": "A Baselarte é uma empresa de engenharia de software e tecnologia criativa. Construindo, em silêncio, sistemas, interfaces e infraestrutura precisos.",
       "meta.locale": "pt_BR",
+      "meta.localeAlternate": "en_US",
 
-      "skip": "Pular para o conteúdo",
+      "skipLink": "Pular para o conteúdo",
       "nav.label": "Principal",
       "nav.about": "Sobre",
       "nav.practice": "Prática",
       "nav.principles": "Princípios",
-      "lang.short": "EN",
-      "lang.switch": "View in English",
+      "languageToggle.label": "EN",
+      "languageToggle.description": "View in English",
 
       "hero.title": "Engenharia de software, feita com <em>precisão silenciosa.</em>",
       "hero.lede": "A Baselarte é uma empresa de engenharia de software e tecnologia criativa. Construímos sistemas, interfaces e infraestrutura <em>simples na superfície</em> e rigorosos por dentro.",
@@ -80,7 +86,7 @@
 
       "principles.title": "A responsabilidade continua humana",
       "principles.quote": "Um computador nunca pode ser responsabilizado; portanto, um computador nunca deve tomar uma decisão de gestão.",
-      "principles.cite": "Apresentação interna de treinamento da IBM, 1979",
+      "principles.citation": "Apresentação interna de treinamento da IBM, 1979",
       "principles.body": "Construímos ferramentas que ajudam pessoas a decidir, não ferramentas que decidem por elas. A automação deve afiar o julgamento, nunca substituí-lo.",
 
       "status.title": "Algo está sendo construído",
@@ -89,76 +95,75 @@
       "footer.company": "Empresa",
       "footer.language": "Idioma",
       "footer.index": "Índice",
-      "footer.time": "Hora local",
-      "mode.day": "dia",
-      "mode.night": "noite"
+      "footer.localTime": "Hora local",
+      "dayPeriod.day": "dia",
+      "dayPeriod.night": "noite",
+
+      "notFound.metaTitle": "Página não encontrada — Baselarte",
+      "notFound.title": "Nada <em>aqui, ainda.</em>",
+      "notFound.backHome": "Voltar para baselarte.com"
     }
   };
 
-  var root = document.documentElement;
+  const documentRoot = document.documentElement;
+  const { DEFAULT_LANGUAGE, storeLanguage } = window.siteBoot;
 
-  function current() {
-    return root.lang === "pt-BR" ? "pt-BR" : "en";
+  function currentLanguage() {
+    return documentRoot.lang in TRANSLATIONS ? documentRoot.lang : DEFAULT_LANGUAGE;
   }
 
-  function t(key) {
-    var table = STRINGS[current()];
-    return key in table ? table[key] : STRINGS.en[key];
+  function translate(key) {
+    const activeTranslations = TRANSLATIONS[currentLanguage()];
+    return key in activeTranslations ? activeTranslations[key] : TRANSLATIONS[DEFAULT_LANGUAGE][key];
   }
 
-  function setMeta(selector, value) {
-    var el = document.querySelector(selector);
-    if (el) el.setAttribute("content", value);
-  }
-
-  function apply() {
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      el.innerHTML = t(el.getAttribute("data-i18n"));
+  function applyTranslations() {
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      element.innerHTML = translate(element.dataset.i18n);
     });
 
-    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
-      el.getAttribute("data-i18n-attr").split(";").forEach(function (pair) {
-        var parts = pair.split(":");
-        el.setAttribute(parts[0].trim(), t(parts[1].trim()));
+    document.querySelectorAll("[data-i18n-attributes]").forEach((element) => {
+      element.dataset.i18nAttributes.split(";").forEach((attributeMapping) => {
+        const [attributeName, translationKey] = attributeMapping.split(":").map((part) => part.trim());
+        element.setAttribute(attributeName, translate(translationKey));
       });
     });
 
-    document.querySelectorAll("[data-set-lang]").forEach(function (el) {
-      el.setAttribute("aria-pressed", String(el.getAttribute("data-set-lang") === current()));
+    document.querySelectorAll("[data-language-option]").forEach((optionButton) => {
+      const isActive = optionButton.dataset.languageOption === currentLanguage();
+      optionButton.setAttribute("aria-pressed", String(isActive));
     });
-
-    document.title = t("meta.title");
-    setMeta('meta[name="description"]', t("meta.description"));
-    setMeta('meta[property="og:locale"]', t("meta.locale"));
-    setMeta('meta[property="og:locale:alternate"]', current() === "en" ? "pt_BR" : "en_US");
   }
 
-  async function setLang(lang) {
-    if (lang === current()) return;
+  async function setLanguage(language) {
+    if (language === currentLanguage()) return;
 
-    // main.js may provide a cross-fade; the switch works without it.
-    if (window.__fadeOut) await window.__fadeOut();
+    // main.js may register a cross-fade; switching works without it.
+    const transition = window.languageTransition;
+    if (transition) await transition.fadeOut();
 
-    root.lang = lang;
-    try { localStorage.setItem("lang", lang); } catch (e) {}
-    apply();
+    documentRoot.lang = language;
+    storeLanguage(language);
+    applyTranslations();
 
-    if (window.__fadeIn) window.__fadeIn();
+    if (transition) transition.fadeIn();
   }
 
-  document.querySelectorAll("[data-lang-toggle]").forEach(function (el) {
-    el.addEventListener("click", function () {
-      setLang(current() === "en" ? "pt-BR" : "en");
+  document.querySelectorAll("[data-language-toggle]").forEach((toggleButton) => {
+    toggleButton.addEventListener("click", () => {
+      setLanguage(currentLanguage() === "en" ? "pt-BR" : "en");
     });
   });
 
-  document.querySelectorAll("[data-set-lang]").forEach(function (el) {
-    el.addEventListener("click", function () {
-      setLang(el.getAttribute("data-set-lang"));
+  document.querySelectorAll("[data-language-option]").forEach((optionButton) => {
+    optionButton.addEventListener("click", () => {
+      setLanguage(optionButton.dataset.languageOption);
     });
   });
 
-  window.i18n = { t: t, apply: apply, current: current, setLang: setLang };
+  window.i18n = { translate, applyTranslations, currentLanguage, setLanguage };
 
-  if (current() !== "en") apply();
+  // The markup ships in English; this switches it to the detected language and
+  // marks the active option in the footer.
+  applyTranslations();
 })();
